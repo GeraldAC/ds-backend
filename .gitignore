@@ -1,0 +1,21 @@
+# Node modules
+node_modules/
+
+# Entornos
+.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Producción / builds
+dist/
+build/
+
+# Otros
+*.local
