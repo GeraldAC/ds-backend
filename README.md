@@ -24,6 +24,35 @@ src/
 └── server.js      # Inicialización del servidor
 ```
 
+## ⚙️ Configuración inicial
+
+1. Clona el repositorio:
+
+   ```bash
+   git remote add origin https://github.com/GeraldAC/ds-backend.git
+   ```
+
+2. Instala las dependencias:
+
+   ```bash
+   npm install
+   ```
+
+3. Crea un archivo .env en la raíz del proyecto y configura tus variables de entorno:
+   ```bash
+   DB_HOST=localhost
+   DB_PORT=3306
+   DB_USER=root
+   DB_PASSWORD=tu_contraseña
+   DB_NAME=nombre_de_tu_base
+   JWT_SECRET=una_clave_segura
+   PORT=3000
+   ```
+4. Inicia el servidor:
+   ```bash
+   npm run dev
+   ```
+
 ## ✅ Funcionalidades
 
 - Registro y login de usuarios
