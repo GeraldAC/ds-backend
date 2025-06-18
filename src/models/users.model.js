@@ -51,3 +51,10 @@ export const deleteUser = async (id) => {
   const [result] = await pool.query("DELETE FROM users WHERE id = ?", [id]);
   return result.affectedRows;
 };
+
+export const getUserByEmail = async (email) => {
+  const [rows] = await pool.query("SELECT * FROM users WHERE email = ?", [
+    email,
+  ]);
+  return rows[0];
+};

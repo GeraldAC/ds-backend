@@ -1,12 +1,20 @@
 import { Router } from "express";
 import * as productsController from "../controllers/products.controller.js";
+import { authenticate } from "../middlewares/auth.middleware.js";
+import { createProductSchema } from "../validations/products.validation.js";
+import { validate } from "../middlewares/validate.middleware.js";
 
 const router = Router();
 
 router.get("/", productsController.getProducts);
 router.get("/:id", productsController.getProduct);
-router.post("/", productsController.createProduct);
-router.put("/:id", productsController.updateProduct);
-router.delete("/:id", productsController.deleteProduct);
+router.post(
+  "/",
+  validate(createProductSchema),
+  authenticate,
+  productsController.createProduct,
+);
+router.put("/:id", authenticate, productsController.updateProduct);
+router.delete("/:id", authenticate, productsController.deleteProduct);
 
 export default router;

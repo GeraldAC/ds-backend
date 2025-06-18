@@ -12,7 +12,8 @@ export const getProducer = async (req, res) => {
 };
 
 export const createProducer = async (req, res) => {
-  const { user_id, bio, location, phone } = req.body;
+  const user_id = req.user.id;
+  const { bio, location, phone } = req.body;
   try {
     const producer = await ProducersModel.createProducer({
       user_id,

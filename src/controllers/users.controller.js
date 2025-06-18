@@ -1,4 +1,5 @@
 import * as UserModel from "../models/users.model.js";
+import { httpError } from "../utils/httpError.js";
 
 export const getUsers = async (req, res) => {
   const users = await UserModel.getAllUsers();
@@ -7,7 +8,7 @@ export const getUsers = async (req, res) => {
 
 export const getUser = async (req, res) => {
   const user = await UserModel.getUserById(req.params.id);
-  if (!user) return res.status(404).json({ message: "User not found" });
+  if (!user) throw httpError(404, "Usuario no encontrado");
   res.json(user);
 };
 
