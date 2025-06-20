@@ -2,7 +2,14 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-const required = ["PORT", "DB_HOST", "DB_USER", "DB_PASSWORD", "DB_NAME"];
+const required = [
+  "PORT",
+  "DB_HOST",
+  "DB_USER",
+  "DB_PASSWORD",
+  "DB_NAME",
+  "FRONTEND_URL",
+];
 
 for (const key of required) {
   if (!process.env[key]) {
@@ -18,4 +25,5 @@ export const env = {
     password: process.env.DB_PASSWORD,
     name: process.env.DB_NAME,
   },
+  front: process.env.FRONTEND_URL,
 };

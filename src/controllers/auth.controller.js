@@ -36,7 +36,7 @@ export const login = async (req, res) => {
       id: user.id,
       name: user.name,
       email: user.email,
-      is_producer: user.is_producer,
+      is_producer: Boolean(user.is_producer),
       avatar_url: user.avatar_url,
     },
   });
