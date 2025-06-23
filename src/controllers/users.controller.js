@@ -1,15 +1,16 @@
 import * as UserModel from "../models/users.model.js";
 import { httpError } from "../utils/httpError.js";
+import { serializerUser, serializerUsers } from "../utils/user.serializer.js";
 
 export const getUsers = async (req, res) => {
   const users = await UserModel.getAllUsers();
-  res.json(users);
+  res.json(serializerUsers(users));
 };
 
 export const getUser = async (req, res) => {
   const user = await UserModel.getUserById(req.params.id);
   if (!user) throw httpError(404, "Usuario no encontrado");
-  res.json(user);
+  res.json(serializerUser(user));
 };
 
 export const createUser = async (req, res) => {
@@ -22,7 +23,7 @@ export const createUser = async (req, res) => {
       is_producer,
       avatar_url,
     });
-    res.status(201).json(user);
+    res.status(201).json(serializerUser(user));
   } catch (err) {
     if (err.code === "ER_DUP_ENTRY") {
       return res.status(400).json({ message: "Email already exists" });

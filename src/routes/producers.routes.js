@@ -6,6 +6,7 @@ import { createProducerInfoSchema } from "../validations/producers.validation.js
 
 const router = Router();
 
+router.get("/user/:id", producersController.getProducerByUserId);
 router.get("/", authenticate, producersController.getProducers);
 router.get("/:id", producersController.getProducer);
 router.post(

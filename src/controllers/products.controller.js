@@ -1,14 +1,18 @@
 import * as ProductsModel from "../models/products.model.js";
+import {
+  serializeProduct,
+  serializeProducts,
+} from "../utils/product.serializer.js";
 
 export const getProducts = async (req, res) => {
   const products = await ProductsModel.getAllProducts();
-  res.json(products);
+  res.json(serializeProducts(products));
 };
 
 export const getProduct = async (req, res) => {
   const product = await ProductsModel.getProductById(req.params.id);
   if (!product) return res.status(404).json({ message: "Product not found" });
-  res.json(product);
+  res.json(serializeProduct(product));
 };
 
 export const createProduct = async (req, res) => {
@@ -22,7 +26,7 @@ export const createProduct = async (req, res) => {
       stock,
       image_url,
     });
-    res.status(201).json(product);
+    res.status(201).json(serializeProduct(product));
   } catch (err) {
     res
       .status(500)

@@ -17,7 +17,20 @@ export const getProducerById = async (id) => {
     JOIN users u ON pi.user_id = u.id
     WHERE pi.id = ?
   `,
-    [id]
+    [id],
+  );
+  return rows[0];
+};
+
+export const getProducerByUserId = async (userId) => {
+  const [rows] = await pool.query(
+    `
+    SELECT pi.id, pi.user_id, u.name, pi.bio, pi.location, pi.phone
+    FROM producers_info pi
+    JOIN users u ON pi.user_id = u.id
+    WHERE pi.user_id = ?
+    `,
+    [userId],
   );
   return rows[0];
 };
@@ -25,7 +38,7 @@ export const getProducerById = async (id) => {
 export const createProducer = async ({ user_id, bio, location, phone }) => {
   const [result] = await pool.query(
     "INSERT INTO producers_info (user_id, bio, location, phone) VALUES (?, ?, ?, ?)",
-    [user_id, bio, location, phone]
+    [user_id, bio, location, phone],
   );
   return { id: result.insertId, user_id, bio, location, phone };
 };
@@ -43,7 +56,7 @@ export const updateProducer = async (id, updates) => {
 
   const [result] = await pool.query(
     `UPDATE producers_info SET ${fields.join(", ")} WHERE id = ?`,
-    values
+    values,
   );
   return result.affectedRows;
 };

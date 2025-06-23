@@ -11,6 +11,12 @@ export const getProducer = async (req, res) => {
   res.json(producer);
 };
 
+export const getProducerByUserId = async (req, res) => {
+  const producer = await ProducersModel.getProducerByUserId(req.params.id);
+  if (!producer) return res.status(404).json({ message: "Producer not found" });
+  res.json(producer);
+};
+
 export const createProducer = async (req, res) => {
   const user_id = req.user.id;
   const { bio, location, phone } = req.body;
