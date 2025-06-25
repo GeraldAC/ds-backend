@@ -1,5 +1,21 @@
 import * as ReviewsModel from "../models/reviews.model.js";
 
+export const getReviewsByUserId = async (req, res) => {
+  const userId = parseInt(req.params.userId);
+
+  if (isNaN(userId)) {
+    return res.status(400).json({ message: "Invalid user ID" });
+  }
+
+  try {
+    const reviews = await ReviewsModel.getUserReviewsWithProduct(userId);
+    return res.json(reviews);
+  } catch (error) {
+    console.error("Error fetching reviews:", error);
+    return res.status(500).json({ message: "Internal server error" });
+  }
+};
+
 export const getReviews = async (req, res) => {
   const reviews = await ReviewsModel.getAllReviews();
   res.json(reviews);
