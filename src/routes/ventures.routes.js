@@ -6,6 +6,11 @@ import { createVentureSchema } from "../validations/ventures.validation.js";
 
 const router = Router();
 
+router.get(
+  "/producer",
+  authenticate,
+  venturesController.getVenturesByProducerId,
+);
 router.get("/", authenticate, venturesController.getVentures);
 router.get("/:id", venturesController.getVenture);
 router.post(

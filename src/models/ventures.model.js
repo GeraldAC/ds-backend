@@ -1,5 +1,13 @@
 import pool from "../config/db.js";
 
+export const getVenturesByProducerId = async (producerId) => {
+  const [rows] = await pool.query(
+    "SELECT * FROM ventures WHERE producer_id = ?",
+    [producerId],
+  );
+  return rows;
+};
+
 export const getAllVentures = async () => {
   const [rows] = await pool.query(`
     SELECT v.id, v.name, v.description, v.image_url, v.created_at,
@@ -19,7 +27,7 @@ export const getVentureById = async (id) => {
     JOIN users u ON v.producer_id = u.id
     WHERE v.id = ?
   `,
-    [id]
+    [id],
   );
   return rows[0];
 };
@@ -33,7 +41,7 @@ export const createVenture = async ({
   const [result] = await pool.query(
     `INSERT INTO ventures (name, description, image_url, producer_id)
      VALUES (?, ?, ?, ?)`,
-    [name, description, image_url, producer_id]
+    [name, description, image_url, producer_id],
   );
   return { id: result.insertId, name, description, image_url, producer_id };
 };
@@ -51,7 +59,7 @@ export const updateVenture = async (id, updates) => {
 
   const [result] = await pool.query(
     `UPDATE ventures SET ${fields.join(", ")} WHERE id = ?`,
-    values
+    values,
   );
   return result.affectedRows;
 };

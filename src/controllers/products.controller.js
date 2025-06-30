@@ -4,6 +4,30 @@ import {
   serializeProducts,
 } from "../utils/product.serializer.js";
 
+export const listProductsByVenture = async (req, res) => {
+  try {
+    const ventureId = req.params.id;
+
+    const products = await ProductsModel.getProductsByVentureId(ventureId);
+
+    res.status(200).json(serializeProducts(products));
+  } catch (error) {
+    console.error("Error al obtener productos por venture:", error);
+    res.status(500).json({ message: "Error al obtener los productos." });
+  }
+};
+
+export const listProductsByProducer = async (req, res) => {
+  try {
+    const producerId = req.user.id;
+    const products = await ProductsModel.getProductsByProducerId(producerId);
+    res.status(200).json(serializeProducts(products));
+  } catch (error) {
+    console.error("Error al obtener productos por producer:", error);
+    res.status(500).json({ message: "Error al obtener los productos." });
+  }
+};
+
 export const getProducts = async (req, res) => {
   const products = await ProductsModel.getAllProducts();
   res.json(serializeProducts(products));

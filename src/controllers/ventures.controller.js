@@ -1,5 +1,18 @@
 import * as VenturesModel from "../models/ventures.model.js";
 
+export const getVenturesByProducerId = async (req, res) => {
+  try {
+    const producerId = req.user.id;
+
+    const ventures = await VenturesModel.getVenturesByProducerId(producerId);
+
+    res.status(200).json(ventures);
+  } catch (error) {
+    console.error("Error al obtener ventures:", error);
+    res.status(500).json({ message: "Error al obtener los emprendimientos." });
+  }
+};
+
 export const getVentures = async (req, res) => {
   const ventures = await VenturesModel.getAllVentures();
   res.json(ventures);
@@ -12,7 +25,9 @@ export const getVenture = async (req, res) => {
 };
 
 export const createVenture = async (req, res) => {
-  const { name, description, image_url, producer_id } = req.body;
+  const producer_id = req.user.id;
+
+  const { name, description, image_url } = req.body;
   try {
     const venture = await VenturesModel.createVenture({
       name,
