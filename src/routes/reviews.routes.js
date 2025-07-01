@@ -6,6 +6,7 @@ import { createReviewSchema } from "../validations/reviews.validation.js";
 
 const router = Router();
 
+router.get("/average/:productId", reviewsController.getAverageRating);
 router.get("/user/:userId", reviewsController.getReviewsByUserId);
 router.get("/", authenticate, reviewsController.getReviews);
 router.get("/:id", reviewsController.getReview);

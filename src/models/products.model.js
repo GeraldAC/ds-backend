@@ -1,5 +1,60 @@
 import pool from "../config/db.js";
 
+export const getProductDetails = async (productId) => {
+  const [productRows] = await pool.query(
+    `
+    SELECT * FROM products WHERE id = ?
+    `,
+    [productId],
+  );
+
+  if (productRows.length === 0) return null;
+  const product = productRows[0];
+
+  const [ventureRows] = await pool.query(
+    `
+    SELECT * FROM ventures WHERE id = ?
+    `,
+    [product.venture_id],
+  );
+  const venture = ventureRows[0];
+
+  const [producerUserRows] = await pool.query(
+    `
+    SELECT * FROM users WHERE id = ?
+    `,
+    [venture.producer_id],
+  );
+  const producerUser = producerUserRows[0];
+
+  const [producerInfoRows] = await pool.query(
+    `
+    SELECT * FROM producers_info WHERE user_id = ?
+    `,
+    [venture.producer_id],
+  );
+  const producerInfo = producerInfoRows[0];
+
+  const [reviews] = await pool.query(
+    `
+    SELECT r.*, u.name AS user_name, u.avatar_url
+    FROM reviews r
+    JOIN users u ON r.user_id = u.id
+    WHERE r.product_id = ?
+    ORDER BY r.created_at DESC
+    `,
+    [productId],
+  );
+
+  return {
+    product,
+    venture,
+    producerUser,
+    producerInfo,
+    reviews,
+  };
+};
+
 export const getProductsByVentureId = async (ventureId) => {
   const [rows] = await pool.query(
     `

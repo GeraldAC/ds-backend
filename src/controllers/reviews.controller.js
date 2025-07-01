@@ -1,5 +1,17 @@
 import * as ReviewsModel from "../models/reviews.model.js";
 
+export const getAverageRating = async (req, res) => {
+  const { productId } = req.params;
+  try {
+    const value = await ReviewsModel.getAverageRatingByProductId(productId);
+    const average = parseFloat(value);
+    res.status(200).json({ average });
+  } catch (error) {
+    console.error("Error getting average rating:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
 export const getReviewsByUserId = async (req, res) => {
   const userId = parseInt(req.params.userId);
 
@@ -28,7 +40,10 @@ export const getReview = async (req, res) => {
 };
 
 export const createReview = async (req, res) => {
-  const { product_id, user_id, rating, comment } = req.body;
+  const user_id = req.user.id;
+
+  const { product_id, rating, comment } = req.body;
+
   if (rating < 1 || rating > 5) {
     return res.status(400).json({ message: "Rating must be between 1 and 5" });
   }

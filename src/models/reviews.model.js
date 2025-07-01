@@ -1,5 +1,12 @@
 import pool from "../config/db.js";
 
+export const getAverageRatingByProductId = async (productId) => {
+  const [rows] = await pool.query("SELECT get_average_rating(?) AS average", [
+    productId,
+  ]);
+  return rows[0].average;
+};
+
 export const getUserReviewsWithProduct = async (userId) => {
   const [rows] = await pool.query(
     `

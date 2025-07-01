@@ -6,15 +6,17 @@ import { validate } from "../middlewares/validate.middleware.js";
 
 const router = Router();
 
-router.get(
-  "/venture/:id",
-  authenticate,
-  productsController.listProductsByVenture,
-);
+router.get("/:id/details", productsController.fetchProductDetails);
+
 router.get(
   "/producer",
   authenticate,
   productsController.listProductsByProducer,
+);
+router.get(
+  "/venture/:id",
+  authenticate,
+  productsController.listProductsByVenture,
 );
 router.get("/", productsController.getProducts);
 router.get("/:id", productsController.getProduct);

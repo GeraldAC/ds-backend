@@ -4,6 +4,22 @@ import {
   serializeProducts,
 } from "../utils/product.serializer.js";
 
+export const fetchProductDetails = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const details = await ProductsModel.getProductDetails(id);
+
+    if (!details) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+
+    res.json(details);
+  } catch (err) {
+    console.error("Error fetching product details:", err);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
 export const listProductsByVenture = async (req, res) => {
   try {
     const ventureId = req.params.id;

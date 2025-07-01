@@ -59,3 +59,24 @@ CREATE TABLE reviews (
     FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
+
+DELIMITER $$
+
+CREATE FUNCTION get_average_rating(p_product_id INT)
+RETURNS DECIMAL(3,2)
+DETERMINISTIC
+READS SQL DATA
+BEGIN
+    DECLARE avg_rating DECIMAL(3,2);
+
+    SELECT AVG(rating)
+    INTO avg_rating
+    FROM reviews
+    WHERE product_id = p_product_id;
+
+    RETURN IFNULL(avg_rating, 0); -- Retorna 0 si no hay reseñas
+
+END$$
+
+DELIMITER ;
+
