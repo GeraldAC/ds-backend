@@ -55,6 +55,22 @@ const seedAll = async () => {
         avatar_url:
           "https://cdn.akamai.steamstatic.com/apps/dota2/images/dota_react/heroes/omniknight.png",
       },
+      {
+        name: "María Ccollcca",
+        email: "maria@correo.com",
+        password: "pass7",
+        is_producer: true,
+        avatar_url:
+          "https://cdn.akamai.steamstatic.com/apps/dota2/images/dota_react/heroes/drow_ranger.png",
+      },
+      {
+        name: "Raúl Inuma",
+        email: "raul@correo.com",
+        password: "pass8",
+        is_producer: true,
+        avatar_url:
+          "https://cdn.akamai.steamstatic.com/apps/dota2/images/dota_react/heroes/earthshaker.png",
+      },
     ];
 
     for (const user of users) {
@@ -92,6 +108,18 @@ const seedAll = async () => {
         location: "Tarapoto, Perú",
         phone: "+51999999903",
       },
+      {
+        user_id: 7,
+        bio: "Productora andina que promueve el consumo de superalimentos locales.",
+        location: "Ayacucho, Perú",
+        phone: "+51999999904",
+      },
+      {
+        user_id: 8,
+        bio: "Joven emprendedor amazónico enfocado en productos naturales y sostenibles.",
+        location: "Pucallpa, Perú",
+        phone: "+51999999905",
+      },
     ];
 
     for (const p of producers_info) {
@@ -106,24 +134,77 @@ const seedAll = async () => {
     const ventures = [
       {
         name: "EcoAndino",
-        description: "Productos orgánicos de los Andes peruanos.",
+        description: "Productos orgánicos de los Andes y Selva del Cusco.",
         image_url:
-          "https://scontent.fcuz2-1.fna.fbcdn.net/v/t39.30808-6/289996671_488711243059186_3181301956516631774_n.png?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=kXonSpP-ZV8Q7kNvwHnA5Ig&_nc_oc=AdlKMHsVs0_fquMNMKDqnNBjBGj6etwA0fw1ssfEZ9WvqDUd5VatWLlEoIy3aWyJCYYtMBGU7g0rFyJx6RG29slv&_nc_zt=23&_nc_ht=scontent.fcuz2-1.fna&_nc_gid=54IUb0rH3WWv3CPZzDPYMg&oh=00_AfQK5dvtVFFZtR3TwnMXY4dPUxj_yjhklXgZChHeZO0hYw&oe=686E19BD",
+          "https://pbs.twimg.com/profile_images/905481136012492802/cSew1E2s_400x400.jpg",
+        producer_id: 1,
+      },
+      {
+        name: "Andes Verde",
+        description: "Productos orgánicos de altura desde el Valle Sagrado.",
+        image_url:
+          "https://andeangreattreks.com/wp-content/uploads/sacred-valley-markets-by-andean-great-treks.jpg",
+        producer_id: 1,
+      },
+      {
+        name: "Amazonía Viva",
+        description:
+          "Superalimentos y aceites esenciales del corazón de la selva.",
+        image_url:
+          "https://produccionsostenible.org.pe/wp-content/uploads/2020/07/13_1120x630.jpg",
+        producer_id: 1,
+      },
+      {
+        name: "Raíces de la Tierra",
+        description: "Sabores y saberes ancestrales de comunidades quechuas.",
+        image_url:
+          "https://cdn.www.gob.pe/uploads/document/file/3319876/standard_GRANOS%20ANDINOS%202022.jpg.jpg",
+        producer_id: 1,
+      },
+      {
+        name: "Bosque Andino",
+        description:
+          "Infusiones y plantas medicinales recolectadas en Apurímac.",
+        image_url:
+          "https://d20f60vzbd93dl.cloudfront.net/uploads/tienda_007833/374bd60c27505d9b8b4ba7c0bc66e51bc6c4badc.jpeg",
+        producer_id: 1,
+      },
+      {
+        name: "Sol de la Selva",
+        description:
+          "Cacao fino y frutas deshidratadas de productores amazónicos.",
+        image_url:
+          "https://www.peruinforma.com/wp-content/uploads/2021/11/7.jpg",
         producer_id: 1,
       },
       {
         name: "Wiraccocha",
         description: "Alimentos saludables y agroecológicos.",
         image_url:
-          "https://scontent.fcuz2-1.fna.fbcdn.net/v/t39.30808-6/486940515_1078685267610936_4186589355967150479_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeHaHcA44gESyf_6fYU71AfFn89hnkyWhU-fz2GeTJaFT2u-oqD15kZK1Dtt6Wx2JEnuci06nKQQIHe4EFkoPIVI&_nc_ohc=CN-GJr_Kfa0Q7kNvwHXEDWX&_nc_oc=AdmXqVZ4xKdM5qQNpRkY1J7CXQ7Ws7ZH1mHeoUSiKGn_1Uh0BkfGcUKvN1hrivx5qjWhjXAs6H-CeourBWX4C2e8&_nc_zt=23&_nc_ht=scontent.fcuz2-1.fna&_nc_gid=6OA9DXo1f-6MZ2Epamqkow&oh=00_AfT2Y2BXE-Fq-NB8rzQi5UhJl4IKyax4dbiczikEvUJyYg&oe=686E237E",
+          "https://dojiw2m9tvv09.cloudfront.net/97848/brand/logos-marcas-319504.png",
         producer_id: 2,
       },
       {
         name: "De la Selva",
         description: "Sabores tropicales directamente del productor.",
         image_url:
-          "https://scontent.fcuz2-1.fna.fbcdn.net/v/t39.30808-6/405306000_845363904264243_130979765248851425_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHHIHMWXV7TzjEm0GGvGghbDKgi1x2qIlgMqCLXHaoiWAdU7QoF8Y3UcseTbrDjV5K2Lbb2Ney49iYOtxj26EMR&_nc_ohc=WvzxAwSO6vQQ7kNvwHoWx_v&_nc_oc=AdnDA5AYV0fJ6q3aH2IxkDv_2Z-OA9iIhjjmO8tt-skcyuW_hWO7lj1Q5GQUm8aQKLSNySCJmCnH6k9VwTnpxThF&_nc_zt=23&_nc_ht=scontent.fcuz2-1.fna&_nc_gid=Ntix6v9JQAm-AjYaYGawzA&oh=00_AfSpYD7js2ufbKI2fncLKwN2-cpA1UL6k5ti1F9rkwhgNQ&oe=686E37E9",
+          "https://portal.andina.pe/EDPfotografia3/Thumbnail/2024/07/21/001084497W.jpg",
         producer_id: 3,
+      },
+      {
+        name: "Sumaq Kawsay",
+        description:
+          "Emprendimiento familiar de productos andinos sostenibles.",
+        image_url:
+          "https://pqs.pe/wp-content/uploads/2021/04/emprendedor-puno-bebidas-nutritivas.jpg",
+        producer_id: 7,
+      },
+      {
+        name: "Selva Pura",
+        description: "Productos amazónicos directamente desde Pucallpa.",
+        image_url:
+          "https://portal.andina.pe/EDPfotografia3/Thumbnail/2023/09/22/000997100W.jpg",
+        producer_id: 8,
       },
     ];
 
@@ -154,6 +235,63 @@ const seedAll = async () => {
         stock: 150,
         image_url:
           "https://portal.andina.pe/EDPfotografia3/Thumbnail/2019/05/29/000589545W.jpg",
+      },
+      {
+        venture_id: 1,
+        name: "Harina de Plátano",
+        description:
+          "Alternativa saludable y sin gluten, ideal para repostería.",
+        price: 12.5,
+        stock: 80,
+        image_url:
+          "https://campograndeperu.com/wp-content/uploads/2023/10/venta-por-mayor-y-menor-de-harina-de-platano.jpg",
+      },
+      {
+        venture_id: 1,
+        name: "Miel de Abeja Silvestre",
+        description: "Recolectada en bosques protegidos, 100% natural.",
+        price: 18.0,
+        stock: 60,
+        image_url:
+          "https://allnaturalperu.com/wp-content/uploads/2020/07/MANP0004-600x600.jpg",
+      },
+      {
+        venture_id: 1,
+        name: "Aceite de Sacha Inchi",
+        description:
+          "Rico en omega-3, perfecto para ensaladas y cuidado de la piel.",
+        price: 25.0,
+        stock: 40,
+        image_url:
+          "https://santanatura.com.pe/wp-content/uploads/2021/10/aceite-sacha-inti.jpg",
+      },
+      {
+        venture_id: 1,
+        name: "Camucamu Deshidratado",
+        description: "Fuente natural de vitamina C en formato snack.",
+        price: 9.5,
+        stock: 100,
+        image_url:
+          "https://biocenternatural.pe/wp-content/uploads/2023/09/Camu-camu-Bolsa-de-100g.png",
+      },
+      {
+        venture_id: 1,
+        name: "Café Orgánico de la Convención",
+        description: "Cultivado en sombra y con secado natural.",
+        price: 21.0,
+        stock: 70,
+        image_url:
+          "https://delcampoatucasaperu.com/wp-content/uploads/2020/12/CAFE-ECOLOGICO-250GR-S22-600x600.png",
+      },
+      {
+        venture_id: 1,
+        name: "Chips de Plátano Verde",
+        description:
+          "Crocantes y sin conservantes, ideales como snack saludable.",
+        price: 6.5,
+        stock: 120,
+        image_url:
+          "https://www.rasilcorp.com/wp-content/uploads/2021/06/platanos-fritos-rasil-500g.jpg",
       },
       {
         venture_id: 2,
@@ -191,6 +329,42 @@ const seedAll = async () => {
         image_url:
           "https://vitallanosperu.com/wp-content/uploads/2020/02/platano-deshidratado-1.jpg",
       },
+      {
+        venture_id: 4,
+        name: "Harina de Kiwicha",
+        description: "Harina rica en aminoácidos esenciales.",
+        price: 14.0,
+        stock: 90,
+        image_url:
+          "https://realplaza.vtexassets.com/arquivos/ids/15531695-800-auto?v=637420023807100000&width=800&height=auto&aspect=true",
+      },
+      {
+        venture_id: 4,
+        name: "Té de Muña",
+        description: "Infusión natural para aliviar problemas digestivos.",
+        price: 6.5,
+        stock: 200,
+        image_url:
+          "https://www.perumarketplace.com/cmm/getImage.do?atchFileId=FILE_6979c847-db47-4f52-814b-fe5c580cb3d0&fileSn=1&thumb=600",
+      },
+      {
+        venture_id: 5,
+        name: "Aguaje",
+        description: "Fruta amazónica rica en vitamina A.",
+        price: 9.5,
+        stock: 70,
+        image_url:
+          "https://imgs.mongabay.com/wp-content/uploads/sites/25/2025/03/17155511/aguaje-768x512.jpg",
+      },
+      {
+        venture_id: 5,
+        name: "Sacha Inchi",
+        description: "Fuente de omega 3, 6 y 9.",
+        price: 22.0,
+        stock: 50,
+        image_url:
+          "https://realplaza.vtexassets.com/arquivos/ids/16331409/image-d2f8b29d4a5145f788d5e134f25b2372.jpg?v=637515367693400000",
+      },
     ];
 
     for (const p of products) {
@@ -203,6 +377,67 @@ const seedAll = async () => {
 
     // 5. REVIEWS
     const reviews = [
+      {
+        product_id: 1,
+        user_id: 1,
+        rating: 4,
+        comment: "Buena calidad, aunque algunas papas llegaron con tierra.",
+      },
+      {
+        product_id: 2,
+        user_id: 1,
+        rating: 5,
+        comment: "Me encanta el sabor auténtico, como las de mi infancia.",
+      },
+      {
+        product_id: 3,
+        user_id: 1,
+        rating: 3,
+        comment: "Interesante producto, pero esperaba un tamaño más uniforme.",
+      },
+      {
+        product_id: 4,
+        user_id: 1,
+        rating: 5,
+        comment: "Excelente para hacer puré y guisos, muy recomendable.",
+      },
+      {
+        product_id: 5,
+        user_id: 1,
+        rating: 4,
+        comment: "Muy buena textura, pero llegaron con retraso.",
+      },
+      {
+        product_id: 6,
+        user_id: 1,
+        rating: 5,
+        comment: "Frescas y con sabor intenso. Me sorprendieron gratamente.",
+      },
+      {
+        product_id: 7,
+        user_id: 1,
+        rating: 4,
+        comment: "Gran producto, aunque deberían mejorar el empaque.",
+      },
+      {
+        product_id: 8,
+        user_id: 1,
+        rating: 5,
+        comment: "Ricas y nutritivas, definitivamente compraré de nuevo.",
+      },
+      {
+        product_id: 9,
+        user_id: 1,
+        rating: 5,
+        comment:
+          "Apoyar a los agricultores locales con este nivel de calidad es un placer.",
+      },
+      {
+        product_id: 10,
+        user_id: 1,
+        rating: 4,
+        comment: "Muy buena relación calidad-precio.",
+      },
       {
         product_id: 1,
         user_id: 4,
@@ -238,6 +473,30 @@ const seedAll = async () => {
         user_id: 6,
         rating: 4,
         comment: "Buen snack, aunque algo caro.",
+      },
+      {
+        product_id: 7,
+        user_id: 7,
+        rating: 5,
+        comment: "La harina de kiwicha es perfecta para hacer panqueques.",
+      },
+      {
+        product_id: 8,
+        user_id: 6,
+        rating: 4,
+        comment: "Buen sabor y aroma, el empaque podría mejorar.",
+      },
+      {
+        product_id: 9,
+        user_id: 4,
+        rating: 5,
+        comment: "El aguaje llegó muy fresco. Ideal para refrescos.",
+      },
+      {
+        product_id: 10,
+        user_id: 5,
+        rating: 5,
+        comment: "El sacha inchi tiene un sabor único y saludable.",
       },
     ];
 

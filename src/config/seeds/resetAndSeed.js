@@ -31,6 +31,7 @@ const resetAndSeed = async () => {
     console.error("Error al resetear y poblar la base:", error);
   } finally {
     connection.release();
+    await pool.end();
   }
 };
 

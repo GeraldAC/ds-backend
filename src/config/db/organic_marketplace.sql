@@ -14,8 +14,6 @@ CREATE TABLE users (
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-SELECT * FROM users;
-
 -- Información adicional de productores
 CREATE TABLE producers_info (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -25,8 +23,6 @@ CREATE TABLE producers_info (
     phone VARCHAR(20),
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
-
-SELECT * FROM producers_info;
 
 -- Emprendimientos (ventures)
 CREATE TABLE ventures (
@@ -38,8 +34,6 @@ CREATE TABLE ventures (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (producer_id) REFERENCES users(id) ON DELETE CASCADE
 );
-
-SELECT * FROM ventures;
 
 -- Productos
 CREATE TABLE products (
@@ -53,8 +47,6 @@ CREATE TABLE products (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (venture_id) REFERENCES ventures(id) ON DELETE CASCADE
 );
-
-SELECT * FROM products;
 
 -- Reseñas
 CREATE TABLE reviews (

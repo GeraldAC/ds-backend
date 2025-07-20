@@ -13,11 +13,7 @@ router.get(
   authenticate,
   productsController.listProductsByProducer,
 );
-router.get(
-  "/venture/:id",
-  authenticate,
-  productsController.listProductsByVenture,
-);
+router.get("/venture/:id", productsController.listProductsByVenture);
 router.get("/", productsController.getProducts);
 router.get("/:id", productsController.getProduct);
 router.post(
